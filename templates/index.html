@@ -1,0 +1,71 @@
+{% include 'header.html' %}
+
+<!-- Preview content -->
+  <div class="container">
+    <div class="row">
+      <h2>Here's a sample...</h2>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-3" style="text-align: center;">
+        <img src="{{ url_for('static', filename='orignal_image.png') }}">
+        <br>Orignal
+      </div>
+      <div class="col-12 col-md-3" style="text-align: center;">
+        <img src="{{ url_for('static',filename='bw.png') }}">
+        <br>Black & White
+      </div>
+      <div class="col-12 col-md-3" style="text-align: center;">
+        <img src="{{ url_for('static',filename='sketch.png') }}">
+        <br>Sketch
+      </div>
+      <div class="col-12 col-md-3" style="text-align: center;">
+        <img src="{{ url_for('static',filename='cartoon.png') }}">
+        <br>Painting
+      </div>
+    </div>
+    <hr color="white" height="4px;" style="margin-bottom: 50px;">
+  </div>
+  <!-- Main content -->
+  <div class="container">
+    <div class="row">
+      <h2>Get your own here...</h2>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-2"></div>
+      <div class="col-12 col-md-8" style ="background-color: rgb(51, 48, 48); color:white;">
+        <form method="POST" action="/" enctype="multipart/form-data"> 
+          {{form.hidden_tag()}}
+          <div class="form-group">
+            {{form.name.label(class_='label')}}<br>
+            {{form.name(class_='form-control')}}
+          </div>
+          <br>
+          <div class="form-group">
+            {{form.email.label(class_='label')}}<br>
+            {{form.email(class_='form-control')}}
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div><br>
+          <div class="form-group">
+            {{form.photo.label(class_='label')}}<br>
+            {{form.photo(class_='form-control')}}
+          </div><br>
+          <div class="form-group">
+            {{form.select.label(class_='label')}}<br>
+            {{form.select(class_='form-control')}}
+          </div><br>
+          {% for message in form.photo.errors %}
+          <div style="color:red;">{{message}}</div>
+          {% endfor %}
+          {% for message in form.email.errors %}
+          <div style="color:red;">{{message}}</div>
+          {% endfor %}
+          <div class="form-group">
+            <button class="btn btn-info btn-rounded" type="submit">{{form.submit(class_='subm')}}</button>
+          </div>
+        </form>
+      </div>
+      <div class="col-12 col-md-2"></div>
+    </div>
+  </div>
+
+{% include 'footer.html' %}

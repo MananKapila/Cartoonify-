@@ -1,0 +1,41 @@
+{% include 'header.html' %}
+  <!-- Main content -->
+
+  <div class="container" >
+    <div class="row">
+      
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-3">
+        
+      </div>
+      <div class="col-12 col-md-6">
+        <img src="{{url_for('static',filename='uploads/result_'+filename)}}" width="600px;">
+      </div>
+      <div class="col-12 col-md-3">
+        
+      </div>
+    </div>
+  </div>
+  <div class="container" style="margin-top: 50px;">
+    <div class="row">
+      <div class="col-12 col-md-2"></div>
+      <div class="col-12 col-md-8">
+        {{form.hidden_tag()}}
+        <form method="POST" action="/result?email={{email}}&filename={{filename}}" enctype="multipart/form-data">
+          <div class="form-group">
+            {{form.recieve_mail.label(class_='label')}}<br>
+            {{form.recieve_mail(class_='form-control')}}
+          </div>
+          <br>
+          <div class="form-group">
+            <button class="btn btn-info btn-rounded" type="submit">{{form.submit(class_='subm')}}</button>
+          </div>
+        </form>
+      </div>
+      <div class="col-12 col-md-2"></div>
+    </div>
+  </div>
+
+
+{% include 'footer.html' %}
